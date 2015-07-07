@@ -28,7 +28,7 @@ class AnswersController extends AppController
 
        $this->set('answers', $this->paginate($this->Answers->find('all',[
 		'conditions' => ['Homeworks.h_id =' => $id],
-		'group'=> 'answers.username'])));
+		'group'=> 'Answers.username'])));
         $this->set('_serialize', ['answers']);
     }
 
@@ -83,6 +83,11 @@ class AnswersController extends AppController
         $this->set('_serialize', ['answer']);
     }
 	
+	public function logout()
+	{
+		return $this->redirect('/');
+	}
+
 	public function isAuthorized($user)
 	{
 		if (isset($user['username'])) {
